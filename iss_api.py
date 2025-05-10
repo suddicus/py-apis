@@ -5,6 +5,7 @@ import time
 import webbrowser
 import geocoder
 
+
 # We get the current ISS data
 url = "http://api.open-notify.org/astros.json"
 response = urllib.request.urlopen(url)
@@ -51,4 +52,14 @@ while True:
     lat = lcoation['latitude']
     lon = location['longitude']
 
-    # Output lon and lat 
+    # Output lon and lat to the terminal
+    lat = float(lat)
+    lon = float(lon)
+    print("\nLatitude: " + str(lat))
+    print("\nLongitude: " + str(lon))
+
+    # Update the ISS location on the map
+    iss.goto(lon, lat)
+
+    # Refresh every 5 seconds
+    time.sleep(5)
